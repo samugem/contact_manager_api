@@ -8,7 +8,7 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   try {
     const collection = db.collection("contacts");
-    const results = await collection.find({}).toArray();
+    const results = await collection.find({}).sort({ first_name: 1 }).toArray();
     res.json(results);
   } catch (err) {
     res.status(500).json({
